@@ -6,11 +6,12 @@
     android:layout_height="fill_parent">
 
 
-    <ImageButton
+    <Button
         android:id="@+id/imageButton"
-        android:background="@android:drawable/divider_horizontal_bright"
         android:layout_width="200sp"
         android:layout_height="250sp"
         android:onClick="goTo"
+        android:text="hi"
+        android:background="@android:drawable/picture_frame"
         tools:srcCompat="@tools:sample/backgrounds/scenic[6]" />
 </LinearLayout>

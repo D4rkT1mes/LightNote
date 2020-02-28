@@ -7,13 +7,14 @@
     <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="That's a headline"
+        android:text="@string/head_name"
+        android:hint="@string/headline"
         android:textStyle="bold" />
 
     <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:inputType="textMultiLine"
-        android:hint="That's where you write ur nonsense" />
+        android:hint="@string/text" />
 
 </LinearLayout>

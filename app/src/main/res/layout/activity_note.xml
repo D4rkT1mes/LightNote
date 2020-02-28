@@ -5,8 +5,8 @@
     android:layout_height="match_parent">
 
     <include
-        android:id="@+id/header"
-        layout="@layout/header"
+        android:id="@+id/note_header"
+        layout="@layout/note_header"
         android:layout_width="match_parent"
         android:layout_height="50dp" />
 
