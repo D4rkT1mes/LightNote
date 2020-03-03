@@ -1,42 +1,40 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="50dp"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    android:layout_height="50dp">
 
     <ImageButton
         android:id="@+id/save"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:srcCompat="@android:drawable/ic_menu_save"
         android:contentDescription="@string/save_butt"
-        />
+        app:srcCompat="@android:drawable/ic_menu_save" />
 
     <ImageButton
         android:id="@+id/share"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:srcCompat="@android:drawable/ic_menu_share"
+        android:layout_toStartOf="@id/prefs"
         android:contentDescription="@string/share"
-        android:layout_toStartOf="@id/prefs"/>
+        app:srcCompat="@android:drawable/ic_menu_share" />
 
     <ImageButton
         android:id="@+id/prefs"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:contentDescription="@string/prefs"
         android:layout_toStartOf="@id/exit_note"
+        android:contentDescription="@string/prefs"
         app:srcCompat="@android:drawable/ic_menu_preferences" />
-
 
 
     <ImageButton
         android:id="@+id/exit_note"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
         android:contentDescription="@string/leave_note"
         android:onClick="exitNote"
-        android:layout_alignParentEnd="true"
         app:srcCompat="@android:drawable/ic_menu_close_clear_cancel" />
 
 

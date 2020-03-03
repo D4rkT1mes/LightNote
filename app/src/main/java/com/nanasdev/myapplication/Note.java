@@ -11,25 +11,38 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-    public class Note extends AppCompatActivity {
-        protected void onCreate(Bundle savedInstanceState) {
-            super.onCreate(savedInstanceState);
-            setContentView(R.layout.activity_note);
+public class Note extends AppCompatActivity implements PopupMenu.OnMenuItemClickListener {
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_note);
+    }
+
+    public void exitNote(View v) {
+        PopupMenu p = new PopupMenu(this, v);
+        p.setOnMenuItemClickListener(this);
+        p.inflate(R.menu.exit_note_popup);
+        p.show();
+    }
+
+    @Override
+    public boolean onMenuItemClick(MenuItem i) {
+        switch (i.getItemId()) {
+            case R.id.exit_nosave:
+                Toast.makeText(this, "Not Saved", Toast.LENGTH_SHORT).show();
+                return true;
+            case R.id.exit_save:
+                Toast.makeText(this, "Saved", Toast.LENGTH_SHORT).show();
+                return true;
+            default:
+                return false;
         }
+    }
 
-        public void exitNote(View v) {
-            PopupMenu popup = new PopupMenu(this, v);
-            MenuInflater inflater = popup.getMenuInflater();
-            inflater.inflate(R.menu.exit_note_popup, popup.getMenu());
-            popup.show();
 
-        }
-
-        public void goToMAIN(View view) {
-            Intent i = new Intent(this, MainActivity.class);
-            startActivity(i);
-        }
-
+    public void goToMAIN(View view) {
+        Intent i = new Intent(this, MainActivity.class);
+        startActivity(i);
+    }
 
 
 }
