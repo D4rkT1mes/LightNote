@@ -34,7 +34,6 @@
         android:layout_height="wrap_content"
         android:layout_alignParentEnd="true"
         android:contentDescription="@string/leave_note"
-        android:onClick="exitNote"
         app:srcCompat="@android:drawable/ic_menu_close_clear_cancel" />
 
 

@@ -24,11 +24,15 @@ public class Note extends AppCompatActivity implements PopupMenu.OnMenuItemClick
         p.show();
     }
 
+
+    
     @Override
     public boolean onMenuItemClick(MenuItem i) {
         switch (i.getItemId()) {
             case R.id.exit_nosave:
-                Toast.makeText(this, "Not Saved", Toast.LENGTH_SHORT).show();
+                //edit this!!
+                Intent intent = new Intent(this, MainActivity.class);
+                startActivity(intent);
                 return true;
             case R.id.exit_save:
                 Toast.makeText(this, "Saved", Toast.LENGTH_SHORT).show();
@@ -39,10 +43,6 @@ public class Note extends AppCompatActivity implements PopupMenu.OnMenuItemClick
     }
 
 
-    public void goToMAIN(View view) {
-        Intent i = new Intent(this, MainActivity.class);
-        startActivity(i);
-    }
-
+   
 
 }
