@@ -2,7 +2,7 @@
     <string name="app_name">My Application</string>
     <string name="headline">That\'s where you write your headline</string>
     <string name="text">That\'s where you write your text</string>
-    <string name="head_name">where the fork is this tag</string>
+    <!-- <string name="head_name"></string> -->
     <string name="save_butt">Save</string>
     <string name="save_exit">Save</string>
     <string name="share">Share</string>
