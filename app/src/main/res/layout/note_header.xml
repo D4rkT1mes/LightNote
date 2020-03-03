@@ -24,11 +24,11 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:contentDescription="@string/prefs"
-        android:layout_toStartOf="@id/leave"
+        android:layout_toStartOf="@id/leave_save"
         app:srcCompat="@android:drawable/ic_menu_preferences" />
 
     <ImageButton
-        android:id="@+id/leave"
+        android:id="@+id/leave_save"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:contentDescription="@string/leave_note"
