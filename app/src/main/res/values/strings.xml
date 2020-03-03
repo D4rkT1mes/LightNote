@@ -2,11 +2,15 @@
     <string name="app_name">My Application</string>
     <string name="headline">That\'s where you write your headline</string>
     <string name="text">That\'s where you write your text</string>
-    <string name="head_name"></string>
+    <string name="head_name">where the fork is this tag</string>
     <string name="save_butt">Save</string>
+    <string name="save_exit">Save</string>
     <string name="share">Share</string>
     <string name="prefs">Preferences</string>
     <string name="leave_note">Leave note</string>
     <string name="greeting">Today is going to be another great day. \n Write something!</string>
+    <string name="add_note">+ Add a new note</string>
+    <string name="save_and_exit">Save and exit</string>
+    <string name="exit_without_saving">Exit without saving</string>
 
 </resources>

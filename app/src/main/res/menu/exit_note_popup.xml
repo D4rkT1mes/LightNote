@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+        <item
+            android:id="@+id/exit_save"
+            android:title="@string/save_and_exit" />
+        <item
+            android:id="@+id/exit_nosave"
+            android:title="@string/exit_without_saving" />
+    </menu>
+

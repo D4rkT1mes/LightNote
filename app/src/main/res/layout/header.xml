@@ -1,16 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="50dp">
+    android:layout_height="100dp">
 
 
     <TextView
-        android:id="@+id/textView"
+        android:id="@+id/greeting"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="50dp"
         android:text="@string/greeting"
-        android:textSize="20sp"
-        android:textAlignment="center"/>
+        android:textAlignment="center"
+        android:layout_alignParentTop="true"
+        android:textSize="20sp" />
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_below="@+id/greeting"
+        android:text="@string/add_note" />
+
 </RelativeLayout>

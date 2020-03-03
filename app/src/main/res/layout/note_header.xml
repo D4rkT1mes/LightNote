@@ -9,7 +9,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:srcCompat="@android:drawable/ic_menu_save"
-        android:contentDescription="@string/save_butt" />
+        android:contentDescription="@string/save_butt"
+        />
 
     <ImageButton
         android:id="@+id/share"
@@ -24,15 +25,17 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:contentDescription="@string/prefs"
-        android:layout_toStartOf="@id/leave"
+        android:layout_toStartOf="@id/exit_note"
         app:srcCompat="@android:drawable/ic_menu_preferences" />
 
+
+
     <ImageButton
-        android:id="@+id/leave"
+        android:id="@+id/exit_note"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:contentDescription="@string/leave_note"
-        android:onClick="goToMAIN"
+        android:onClick="exitNote"
         android:layout_alignParentEnd="true"
         app:srcCompat="@android:drawable/ic_menu_close_clear_cancel" />
 
