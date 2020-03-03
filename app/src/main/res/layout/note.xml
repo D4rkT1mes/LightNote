@@ -8,8 +8,9 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="@string/headline"
-        android:text="@string/head_name"
         android:textStyle="bold" />
+
+    <!-- android:text="@string/headline_name"-->
 
     <EditText
         android:layout_width="match_parent"
