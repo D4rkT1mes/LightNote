@@ -30,9 +30,8 @@ public class Note extends AppCompatActivity implements PopupMenu.OnMenuItemClick
     public boolean onMenuItemClick(MenuItem i) {
         switch (i.getItemId()) {
             case R.id.exit_nosave:
-                //edit this!!
-                Intent intent = new Intent(this, MainActivity.class);
-                startActivity(intent);
+                Intent a = new Intent(this, MainActivity.class);
+                startActivity(a);
                 return true;
             case R.id.exit_save:
                 Toast.makeText(this, "Saved", Toast.LENGTH_SHORT).show();
