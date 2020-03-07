@@ -33,10 +33,10 @@ public class LinedEditText extends androidx.appcompat.widget.AppCompatEditText {
 
         Rect r = mRect;
         Paint paint = mPaint;
-        int baseline = getLineBounds(0, r);
+        int baseline = getLineBounds(0, r) + 10;
 
         for (int i = 0; i < count; i++) {
-            canvas.drawLine(r.left, baseline + 1, r.right, baseline + 1, paint);
+            canvas.drawLine(r.left, baseline, r.right, baseline, paint);
             baseline += getLineHeight();
         }
 

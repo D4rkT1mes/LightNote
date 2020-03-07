@@ -6,6 +6,7 @@
     android:orientation="vertical">
 
     <EditText
+        android:id="@+id/headline"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="@string/headline"
@@ -16,11 +17,11 @@
     <com.nanasdev.myapplication.LinedEditText
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:hint="@string/text"
-        android:gravity="top|left"
         android:ems="10"
-        android:scrollbars="vertical"
+        android:gravity="top|left"
+        android:hint="@string/text"
         android:inputType="textMultiLine"
+        android:scrollbars="vertical"
         tools:ignore="RtlHardcoded" />
 
 </LinearLayout>

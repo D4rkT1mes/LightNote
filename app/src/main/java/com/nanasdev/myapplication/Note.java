@@ -6,16 +6,23 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.LinearLayout;
 import android.widget.PopupMenu;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.opencsv.CSVWriter;
+
 import java.io.File;
 import java.io.FileWriter;
 
 public class Note extends AppCompatActivity implements PopupMenu.OnMenuItemClickListener {
+
+    EditText headline;
+    EditText maintext;
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -29,27 +36,8 @@ public class Note extends AppCompatActivity implements PopupMenu.OnMenuItemClick
         p.show();
     }
 
+    //layout programming
 
-//    mSubmitButton.setOnClickListener(new View.OnClickListener{
-//        String baseDir = android.os.Environment.getExternalStorageDirectory().getAbsolutePath();
-//        String fileName = "Data.csv";
-//        String filePath = baseDir + File.separator + fileName;
-//        File f = new File(filePath );
-//        CSVWriter writer;
-//        // File exist
-//        if(f.exists() && !f.isDirectory()){
-//            mFileWriter = new FileWriter(com.nanasdev.myapplication., true);
-//            writer = new CSVWriter(mFileWriter);
-//        }
-//        else {
-//            writer = new CSVWriter(new FileWriter(filePath));
-//        }
-//        String[] data = getDataStringArray();
-//
-//        writer.writeNext(data);
-//
-//        writer.close();
-//    });
 
     @Override
     public boolean onMenuItemClick(MenuItem i) {
@@ -69,7 +57,5 @@ public class Note extends AppCompatActivity implements PopupMenu.OnMenuItemClick
         }
     }
 
-
-   
 
 }

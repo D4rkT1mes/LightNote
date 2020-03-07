@@ -4,6 +4,7 @@ dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation files('C:\\Users\\anast\\AndroidStudioProjects\\NotesProject\\app\\src\\main\\java\\com\\nanasdev\\myapplication\\libs\\opencsv.jar')
 
+
 }
 
 sourceCompatibility = "7"
