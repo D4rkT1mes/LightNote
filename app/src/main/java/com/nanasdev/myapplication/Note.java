@@ -29,27 +29,27 @@ public class Note extends AppCompatActivity implements PopupMenu.OnMenuItemClick
         p.show();
     }
 
+    Button mSubmitButton = new Button();
+    mSubmitButton.setOnClickListener(new View.OnClickListener{
+        String baseDir = android.os.Environment.getExternalStorageDirectory().getAbsolutePath();
+        String fileName = "Data.csv";
+        String filePath = baseDir + File.separator + fileName;
+        File f = new File(filePath );
+        CSVWriter writer;
+        // File exist
+        if(f.exists() && !f.isDirectory()){
+            mFileWriter = new FileWriter(com.nanasdev.myapplication., true);
+            writer = new CSVWriter(mFileWriter);
+        }
+        else {
+            writer = new CSVWriter(new FileWriter(filePath));
+        }
+        String[] data = getDataStringArray();
 
-//    mSubmitButton.setOnClickListener(new View.OnClickListener{
-//        String baseDir = android.os.Environment.getExternalStorageDirectory().getAbsolutePath();
-//        String fileName = "Data.csv";
-//        String filePath = baseDir + File.separator + fileName;
-//        File f = new File(filePath );
-//        CSVWriter writer;
-//        // File exist
-//        if(f.exists() && !f.isDirectory()){
-//            mFileWriter = new FileWriter(com.nanasdev.myapplication., true);
-//            writer = new CSVWriter(mFileWriter);
-//        }
-//        else {
-//            writer = new CSVWriter(new FileWriter(filePath));
-//        }
-//        String[] data = getDataStringArray();
-//
-//        writer.writeNext(data);
-//
-//        writer.close();
-//    });
+        writer.writeNext(data);
+
+        writer.close();
+    });
 
     @Override
     public boolean onMenuItemClick(MenuItem i) {
