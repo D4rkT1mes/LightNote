@@ -17,5 +17,6 @@ public class MainActivity extends AppCompatActivity {
     public void goTo(View view) {
         Intent i = new Intent(this, Note.class);
         startActivity(i);
+        finish();
     }
 }

@@ -21,16 +21,13 @@ public class Note extends AppCompatActivity implements PopupMenu.OnMenuItemClick
     EditText maintext;
     Button save;
 
-    @SuppressLint("WrongViewCast")
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_note);
 
-        //find all text
+        //define buttons from note_header.xml
         headline = findViewById(R.id.headline);
         maintext = findViewById(R.id.maintext);
-        save = findViewById(R.id.save);
-
     }
 
 
@@ -42,8 +39,6 @@ public class Note extends AppCompatActivity implements PopupMenu.OnMenuItemClick
     }
 
 
-
-
     @Override
     public boolean onMenuItemClick(MenuItem i) {
         switch (i.getItemId()) {
@@ -53,6 +48,7 @@ public class Note extends AppCompatActivity implements PopupMenu.OnMenuItemClick
             case R.id.exit_nosave:
                 Intent a = new Intent(this, MainActivity.class);
                 startActivity(a);
+                finish();
                 return true;
             case R.id.exit_save:
                 Toast.makeText(this, "Saved. Leaving...", Toast.LENGTH_SHORT).show();
