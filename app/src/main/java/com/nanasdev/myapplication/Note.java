@@ -25,7 +25,7 @@ public class Note extends AppCompatActivity implements PopupMenu.OnMenuItemClick
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_note);
 
-        //define buttons from note_header.xml
+        //define buttons from note_header.xml lol checking
         headline = findViewById(R.id.headline);
         maintext = findViewById(R.id.maintext);
     }
