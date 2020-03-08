@@ -41,7 +41,7 @@ public class Note extends AppCompatActivity implements PopupMenu.OnMenuItemClick
         p.show();
     }
 
-    //layout programming
+
 
 
     @Override
