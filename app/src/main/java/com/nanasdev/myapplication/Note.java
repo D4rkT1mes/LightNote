@@ -27,7 +27,8 @@ public class Note extends AppCompatActivity implements PopupMenu.OnMenuItemClick
 
         //define buttons from note_header.xml lol
         headline = findViewById(R.id.headline);
-        maintext = findViewById(R.id.maintext);
+        maintext = findViewById(R.id.maintex);
+        //asdkadsapf
     }
 
 
