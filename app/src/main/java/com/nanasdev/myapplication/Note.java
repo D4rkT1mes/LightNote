@@ -14,22 +14,24 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import java.io.File;
+
 
 public class Note extends AppCompatActivity implements PopupMenu.OnMenuItemClickListener {
 
     EditText headline;
-    EditText maintext;
-    Button save;
+    com.nanasdev.myapplication.LinedEditText maintext;
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_note);
 
-        //define buttons from note_header.xml lol
+
+        //define buttons from note_header.xml
         headline = findViewById(R.id.headline);
         maintext = findViewById(R.id.maintext);
-        //asdkadsapf
     }
+
 
 
     public void exitNote(View v) {
