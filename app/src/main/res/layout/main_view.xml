@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-
+<!--
     <Button
         android:id="@+id/imageButton"
         android:layout_width="200sp"
@@ -14,4 +14,5 @@
         android:onClick="goTo"
         android:text="hi"
         tools:srcCompat="@tools:sample/backgrounds/scenic[6]" />
+        -->
 </LinearLayout>
