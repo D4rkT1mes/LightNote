@@ -47,9 +47,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 
     public static class NotesViewHolder extends RecyclerView.ViewHolder {
-        // each data item is just a string in this case
         public TextView textView;
-
         public NotesViewHolder(TextView v) {
             super(v);
             textView = v;

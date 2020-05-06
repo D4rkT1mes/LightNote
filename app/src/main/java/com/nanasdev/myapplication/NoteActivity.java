@@ -63,7 +63,6 @@ public class NoteActivity extends AppCompatActivity implements PopupMenu.OnMenuI
 
 
     public void saveToFile(View view, String filename, Note note) {
-        //To allow other apps to access files stored in this directory within internal storage, use a FileProvider with the FLAG_GRANT_READ_URI_PERMISSION attribute.
         try (FileOutputStream fos = this.openFileOutput(filename, Context.MODE_PRIVATE)) {
             // System.out.println("!!!!!!!!!!!!!!!!!"+fos.getFD());
             Gson gson = new Gson();
@@ -75,9 +74,6 @@ public class NoteActivity extends AppCompatActivity implements PopupMenu.OnMenuI
             e.printStackTrace();
         }
     }
-
-
-
 
 
     public void exitNote(View v) {
