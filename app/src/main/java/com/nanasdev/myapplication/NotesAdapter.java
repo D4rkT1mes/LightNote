@@ -23,7 +23,7 @@ import androidx.recyclerview.widget.RecyclerView;
     @Override
     public NotesViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         TextView v = (TextView) LayoutInflater.from(parent.getContext())
-                .inflate(android.R.layout.simple_list_item_1, parent, false);
+                .inflate(android.R.layout.simple_list_item_2, parent, false);
         NotesViewHolder vh = new NotesViewHolder(v);
         return vh;
     }

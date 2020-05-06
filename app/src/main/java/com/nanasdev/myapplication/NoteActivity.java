@@ -29,8 +29,6 @@ public class NoteActivity extends AppCompatActivity implements PopupMenu.OnMenuI
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_note);
 
-
-        //define buttons from note_header.xml
         headline = findViewById(R.id.headline);
         maintext = findViewById(R.id.maintext);
 
@@ -50,12 +48,12 @@ public class NoteActivity extends AppCompatActivity implements PopupMenu.OnMenuI
 //        com.nanasdev.myapplication.LinedEditText maintext = findViewById(R.id.maintext);
         if (note == null) {
             note = new Note(new Date(), headline.getText().toString(), maintext.getText().toString());
-            saveToFile(view, "" + (new Date()).toString(), note);
+            saveToFile(view, "" + note.getHeader(), note);
             Toast.makeText(this, "Saved!", Toast.LENGTH_SHORT).show();
         } else {
             note.setHeader(headline.getText().toString());
             note.setBody(maintext.getText().toString());
-            saveToFile(view, note.getDate().toString(), note);
+            saveToFile(view, note.getHeader(), note);
             Toast.makeText(this, "Saved!", Toast.LENGTH_SHORT).show();
         }
 
