@@ -1,18 +1,22 @@
-package com.nanasdev.myapplication;
+package com.nanasdev.lightnote;
 
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.PopupMenu;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.gson.Gson;
 
+import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -22,7 +26,7 @@ import java.util.Date;
 public class NoteActivity extends AppCompatActivity implements PopupMenu.OnMenuItemClickListener {
 
     EditText headline;
-    com.nanasdev.myapplication.LinedEditText maintext;
+    com.nanasdev.lightnote.LinedEditText maintext;
     private Note note;
 
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,28 +36,49 @@ public class NoteActivity extends AppCompatActivity implements PopupMenu.OnMenuI
         headline = findViewById(R.id.headline);
         maintext = findViewById(R.id.maintext);
 
-        note = (Note) getIntent().getSerializableExtra("noteBean");
+        note = (Note) getIntent().getSerializableExtra("note");
         if (note != null) {
             headline.setText(note.getHeader());
             maintext.setText(note.getBody());
         }
+
     }
 
 
 
 
 
-    public void saveNote(View view) {
+    public void saveNote(final View view) {
 //        EditText headline = findViewById(R.id.headline);
 //        com.nanasdev.myapplication.LinedEditText maintext = findViewById(R.id.maintext);
         if (note == null) {
             note = new Note(new Date(), headline.getText().toString(), maintext.getText().toString());
-            saveToFile(view, "" + note.getHeader(), note);
+            saveToFile(view, headline.getText().toString() + "_" + (new Date().toString()), note);
             Toast.makeText(this, "Saved!", Toast.LENGTH_SHORT).show();
         } else {
+//            headline.addTextChangedListener(new TextWatcher() {
+//                @Override
+//                public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+//                    headline.setTag("nochange");
+//                }
+//
+//                @Override
+//                public void onTextChanged(CharSequence s, int start, int before, int count) {
+//                    headline.setTag( null );
+//                }
+//
+//                @Override
+//                public void afterTextChanged(Editable e) {
+//                    if (view.getTag() == null) {
+//                        NotesAdapter.NotesViewHolder nn = new NotesAdapter.NotesViewHolder(view);
+//                        nn.textHeader = headline;
+//                    }
+//                }
+//            });
+
             note.setHeader(headline.getText().toString());
             note.setBody(maintext.getText().toString());
-            saveToFile(view, note.getHeader(), note);
+            saveToFile(view, headline.getText().toString() + "_" + note.getDate().toString(), note);
             Toast.makeText(this, "Saved!", Toast.LENGTH_SHORT).show();
         }
 

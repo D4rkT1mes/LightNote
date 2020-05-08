@@ -14,7 +14,7 @@
 
     <!-- android:text="@string/headline_name"-->
 
-    <com.nanasdev.myapplication.LinedEditText
+    <com.nanasdev.lightnote.LinedEditText
         android:id="@+id/maintext"
         android:layout_width="match_parent"
         android:layout_height="match_parent"

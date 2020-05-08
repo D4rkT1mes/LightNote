@@ -1,4 +1,4 @@
-package com.nanasdev.myapplication;
+package com.nanasdev.lightnote;
 
 import org.junit.Test;
 

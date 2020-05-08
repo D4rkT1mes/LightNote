@@ -1,9 +1,8 @@
-package com.nanasdev.myapplication;
+package com.nanasdev.lightnote;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -26,7 +25,7 @@ public class MainActivity extends AppCompatActivity implements NoteOpener {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        recyclerView = (RecyclerView) findViewById(R.id.notesView);
+        recyclerView = findViewById(R.id.notesView);
         recyclerView.setHasFixedSize(true);
 
         layoutManager = new LinearLayoutManager(this);
@@ -36,6 +35,8 @@ public class MainActivity extends AppCompatActivity implements NoteOpener {
 
         mAdapter = new NotesAdapter(files, this);
         recyclerView.setAdapter(mAdapter);
+
+
     }
 
     public void goTo(View view) {
@@ -55,7 +56,7 @@ public class MainActivity extends AppCompatActivity implements NoteOpener {
             JsonReader reader = new JsonReader(inputStreamReader);
             Note note = gson.fromJson(reader, Note.class);
             if (note != null) {
-                i.putExtra("noteBean", note);
+                i.putExtra("note", note);
             }
         } catch (FileNotFoundException e) {
             e.printStackTrace();

@@ -1,4 +1,4 @@
-package com.nanasdev.myapplication;
+package com.nanasdev.lightnote;
 
 import java.io.Serializable;
 import java.util.Date;

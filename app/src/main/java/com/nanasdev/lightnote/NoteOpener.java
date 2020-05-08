@@ -1,4 +1,4 @@
-package com.nanasdev.myapplication;
+package com.nanasdev.lightnote;
 
 public interface NoteOpener {
     void openNote(String filename);

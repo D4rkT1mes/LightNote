@@ -1,4 +1,4 @@
-package com.nanasdev.myapplication;
+package com.nanasdev.lightnote;
 
 import android.content.Context;
 import android.graphics.Canvas;

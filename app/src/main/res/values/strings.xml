@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Notes</string>
+    <string name="app_name">LightNote</string>
     <string name="headline">That\'s where you write your headline</string>
     <string name="text">That\'s where you write your text</string>
     <!-- <string name="headline_name"></string> -->
