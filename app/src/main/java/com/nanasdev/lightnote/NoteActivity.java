@@ -43,6 +43,7 @@ public class NoteActivity extends AppCompatActivity implements PopupMenu.OnMenuI
 
 
     }
+
     private void goToMain(View view) {
         Intent i = new Intent(this, MainActivity.class);
         startActivity(i);
@@ -51,11 +52,9 @@ public class NoteActivity extends AppCompatActivity implements PopupMenu.OnMenuI
 
     @Override
     public void onBackPressed() {
-        if (isModified(note)) {
+       if (isModified(note)) {
             String ifLeave = getString(R.string.if_leave);
             String wannaSave = getString(R.string.wanna_save);
-            String yes = getString(R.string.yes);
-            String no = getString(R.string.no);
             AlertDialog.Builder builder = new AlertDialog.Builder(this);
             builder.setTitle(ifLeave);
             builder.setMessage(wannaSave);
@@ -84,7 +83,6 @@ public class NoteActivity extends AppCompatActivity implements PopupMenu.OnMenuI
         String notModified = getString(R.string.not_modified);
         String saved = getString(R.string.saved);
         String deleted = getString(R.string.deleted);
-        String unnamed = getString(R.string.unnamed);
         if (note == null) {
             note = new Note(new Date(), headline.getText().toString(), maintext.getText().toString());
 
@@ -97,12 +95,12 @@ public class NoteActivity extends AppCompatActivity implements PopupMenu.OnMenuI
             Toast.makeText(this, saved, Toast.LENGTH_SHORT).show();
 
         } else {
-            if(!isModified(note)){
+            if (!isModified(note)) {
                 Toast.makeText(this, notModified, Toast.LENGTH_SHORT).show();
                 return;
             }
             String oldFileName = note.getModifiedDate() + "_" + note.getHeader();
-            if (!note.getHeader().equalsIgnoreCase(headline.getText().toString()) && this.deleteFile(oldFileName)) {
+            if ((!note.getHeader().equalsIgnoreCase(headline.getText().toString()) || !note.getBody().equalsIgnoreCase(maintext.getText().toString())) && this.deleteFile(oldFileName)) {
                 Toast.makeText(this, deleted, Toast.LENGTH_SHORT).show();
             }
 
@@ -126,7 +124,7 @@ public class NoteActivity extends AppCompatActivity implements PopupMenu.OnMenuI
     }
 
     private boolean isModified(Note note) {
-       return note!=null && (!note.getHeader().equalsIgnoreCase(headline.getText().toString()) || !note.getBody().equalsIgnoreCase(maintext.getText().toString()));
+        return note != null && (!note.getHeader().equalsIgnoreCase(headline.getText().toString()) || !note.getBody().equalsIgnoreCase(maintext.getText().toString()));
     }
 
 

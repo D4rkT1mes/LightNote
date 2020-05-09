@@ -46,6 +46,7 @@ public class NotesAdapter extends RecyclerView.Adapter<NotesAdapter.NotesViewHol
             @Override
             public void onClick(View view) {
                 noteOpener.openNote(fileName);
+                view.setSelected(true);
             }
         });
         holder.view.setOnLongClickListener(new View.OnLongClickListener() {

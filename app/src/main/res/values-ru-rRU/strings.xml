@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">LightNote</string>
+    <string name="headline">Здесь находится заголовок</string>
+    <string name="text">Здесь находится основной текст</string>
+    <string name="save_butt">Сохранить</string>
+    <string name="save_exit">Сохранить</string>
+    <string name="share">Поделиться</string>
+    <string name="prefs">Настройки</string>
+    <string name="leave_note">Покинуть заметку</string>
+    <string name="greeting">Сегодня будет ещё один отличный день. Запишите что-нибудь!</string>
+    <string name="add_note">+ Добавить новую заметку</string>
+    <string name="save_and_exit">Сохранить и выйти</string>
+    <string name="exit_without_saving">Выйти без сохранения</string>
+    <string name="onEmpty">Невозможно сохранить заметку с путыми полями</string>
+    <string name="if_leave">Пока вы не ушли...</string>
+    <string name="wanna_save">Вы хотите сохранить эту заметку?</string>
+    <string name="yes">Да</string>
+    <string name="no">Нет</string>
+    <string name="saved">Сохранено!</string>
+    <string name="deleted">Удалено</string>
+    <string name="unnamed">Без имени</string>
+    <string name="not_modified">Нет изменений!</string>
+    <string name="delete_note_message">Вы хотите удалить эту заметку?</string>
+    <string name="delete_note_title">Удаление заметки</string>
+    <string name="test">Тест</string>
+</resources>

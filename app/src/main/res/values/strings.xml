@@ -23,5 +23,7 @@
     <string name="not_modified">Not modified!</string>
     <string name="delete_note_message">Do you want to delete this note?</string>
     <string name="delete_note_title">Delete note</string>
+    <string name="test">Test</string>
+
 
 </resources>
