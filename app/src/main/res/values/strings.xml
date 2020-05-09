@@ -12,5 +12,16 @@
     <string name="add_note">+ Add a new note</string>
     <string name="save_and_exit">Save and exit</string>
     <string name="exit_without_saving">Exit without saving</string>
+    <string name="onEmpty">Cannot save a note with an empty field(s)</string>
+    <string name="if_leave">Before you leave…</string>
+    <string name="wanna_save">Do you want to save this note?</string>
+    <string name="yes">Yes</string>
+    <string name="no">No</string>
+    <string name="saved">Saved!</string>
+    <string name="deleted">Deleted</string>
+    <string name="unnamed">Unnamed</string>
+    <string name="not_modified">Not modified!</string>
+    <string name="delete_note_message">Do you want to delete this note?</string>
+    <string name="delete_note_title">Delete note</string>
 
 </resources>

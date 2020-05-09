@@ -1,11 +1,13 @@
 package com.nanasdev.lightnote;
 
+import android.content.DialogInterface;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
 import androidx.recyclerview.widget.RecyclerView;
 
 public class NotesAdapter extends RecyclerView.Adapter<NotesAdapter.NotesViewHolder> {
@@ -33,12 +35,10 @@ public class NotesAdapter extends RecyclerView.Adapter<NotesAdapter.NotesViewHol
     @Override
     public void onBindViewHolder(@NonNull NotesViewHolder holder, int position) {
         final String fileName = files[position];
-        String filen = fileName;
-        String del = "_";
-        String[] subStr = filen.split(del);
+        String[] subStr = Utils.getFilenameStrings(fileName);
         for(int i = 0; i < subStr.length; i++) {
-            endName = subStr[0];
-            endDate = subStr[1];
+            endName = subStr[1];
+            endDate = subStr[0];
         }
         holder.textHeader.setText(endName);
         holder.textDate.setText(endDate);
@@ -48,7 +48,30 @@ public class NotesAdapter extends RecyclerView.Adapter<NotesAdapter.NotesViewHol
                 noteOpener.openNote(fileName);
             }
         });
+        holder.view.setOnLongClickListener(new View.OnLongClickListener() {
+            @Override
+            public boolean onLongClick(final View view) {
+                AlertDialog.Builder builder = new AlertDialog.Builder(view.getContext());
+                builder.setTitle(view.getContext().getString(R.string.delete_note_title));
+                builder.setMessage(view.getContext().getString(R.string.delete_note_message));
+                builder.setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+                        view.getContext().deleteFile(fileName);
+                        notifyDataSetChanged();
+                        noteOpener.refreshNoteList();
+                    }
+                });
+                builder.setNegativeButton(android.R.string.no, new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+                        dialog.dismiss();
+                    }
+                });
+                builder.show();
+                return false;
+            }
+        });
     }
+
 
 
     @Override

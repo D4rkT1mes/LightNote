@@ -1,32 +1,31 @@
 package com.nanasdev.lightnote;
 
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
-import android.text.Editable;
-import android.text.TextWatcher;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.PopupMenu;
-import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.gson.Gson;
 
-import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.nio.charset.StandardCharsets;
 import java.util.Date;
 
 
 public class NoteActivity extends AppCompatActivity implements PopupMenu.OnMenuItemClickListener {
 
-    EditText headline;
-    com.nanasdev.lightnote.LinedEditText maintext;
+    private EditText headline;
+    private com.nanasdev.lightnote.LinedEditText maintext;
     private Note note;
 
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,57 +41,101 @@ public class NoteActivity extends AppCompatActivity implements PopupMenu.OnMenuI
             maintext.setText(note.getBody());
         }
 
+
+    }
+    private void goToMain(View view) {
+        Intent i = new Intent(this, MainActivity.class);
+        startActivity(i);
+        finish();
     }
 
-
-
+    @Override
+    public void onBackPressed() {
+        if (isModified(note)) {
+            String ifLeave = getString(R.string.if_leave);
+            String wannaSave = getString(R.string.wanna_save);
+            String yes = getString(R.string.yes);
+            String no = getString(R.string.no);
+            AlertDialog.Builder builder = new AlertDialog.Builder(this);
+            builder.setTitle(ifLeave);
+            builder.setMessage(wannaSave);
+            builder.setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
+                public void onClick(DialogInterface dialog, int id) {
+                    saveNote(maintext);
+                    goToMain(headline);
+                }
+            });
+            builder.setNegativeButton(android.R.string.no, new DialogInterface.OnClickListener() {
+                public void onClick(DialogInterface dialog, int id) {
+                    goToMain(headline);
+                }
+            });
+            builder.show();
+        } else {
+            goToMain(headline);
+        }
+    }
 
 
     public void saveNote(final View view) {
 //        EditText headline = findViewById(R.id.headline);
 //        com.nanasdev.myapplication.LinedEditText maintext = findViewById(R.id.maintext);
+        String onEmpty = getString(R.string.onEmpty);
+        String notModified = getString(R.string.not_modified);
+        String saved = getString(R.string.saved);
+        String deleted = getString(R.string.deleted);
+        String unnamed = getString(R.string.unnamed);
         if (note == null) {
             note = new Note(new Date(), headline.getText().toString(), maintext.getText().toString());
-            saveToFile(view, headline.getText().toString() + "_" + (new Date().toString()), note);
-            Toast.makeText(this, "Saved!", Toast.LENGTH_SHORT).show();
+
+            if (isNoteEmpty()) {
+                Toast.makeText(this, onEmpty, Toast.LENGTH_SHORT).show();
+                return;
+            }
+
+            saveToFile(view, (new Date().toString()) + "_" + headline.getText().toString(), note);
+            Toast.makeText(this, saved, Toast.LENGTH_SHORT).show();
+
         } else {
-//            headline.addTextChangedListener(new TextWatcher() {
-//                @Override
-//                public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-//                    headline.setTag("nochange");
-//                }
-//
-//                @Override
-//                public void onTextChanged(CharSequence s, int start, int before, int count) {
-//                    headline.setTag( null );
-//                }
-//
-//                @Override
-//                public void afterTextChanged(Editable e) {
-//                    if (view.getTag() == null) {
-//                        NotesAdapter.NotesViewHolder nn = new NotesAdapter.NotesViewHolder(view);
-//                        nn.textHeader = headline;
-//                    }
-//                }
-//            });
+            if(!isModified(note)){
+                Toast.makeText(this, notModified, Toast.LENGTH_SHORT).show();
+                return;
+            }
+            String oldFileName = note.getModifiedDate() + "_" + note.getHeader();
+            if (!note.getHeader().equalsIgnoreCase(headline.getText().toString()) && this.deleteFile(oldFileName)) {
+                Toast.makeText(this, deleted, Toast.LENGTH_SHORT).show();
+            }
 
             note.setHeader(headline.getText().toString());
             note.setBody(maintext.getText().toString());
-            saveToFile(view, headline.getText().toString() + "_" + note.getDate().toString(), note);
-            Toast.makeText(this, "Saved!", Toast.LENGTH_SHORT).show();
+            note.setModifiedDate(new Date());
+
+            if (isNoteEmpty()) {
+                Toast.makeText(this, onEmpty, Toast.LENGTH_SHORT).show();
+                return;
+            }
+
+            saveToFile(view, note.getModifiedDate().toString() + "_" + headline.getText().toString(), note);
+            Toast.makeText(this, saved, Toast.LENGTH_SHORT).show();
         }
 
     }
 
+    private boolean isNoteEmpty() {
+        return note.getBody().equals("") || note.getHeader().equals("");
+    }
 
-    public void saveToFile(View view, String filename, Note note) {
+    private boolean isModified(Note note) {
+       return note!=null && (!note.getHeader().equalsIgnoreCase(headline.getText().toString()) || !note.getBody().equalsIgnoreCase(maintext.getText().toString()));
+    }
+
+
+    private void saveToFile(View view, String filename, Note note) {
         try (FileOutputStream fos = this.openFileOutput(filename, Context.MODE_PRIVATE)) {
             // System.out.println("!!!!!!!!!!!!!!!!!"+fos.getFD());
             Gson gson = new Gson();
             String fileContents = gson.toJson(note);
-            fos.write(fileContents.getBytes("UTF-8"));
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
+            fos.write(fileContents.getBytes(StandardCharsets.UTF_8));
         } catch (IOException e) {
             e.printStackTrace();
         }

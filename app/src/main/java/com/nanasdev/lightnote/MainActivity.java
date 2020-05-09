@@ -15,11 +15,11 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.InputStreamReader;
 import java.nio.charset.StandardCharsets;
+import java.util.Arrays;
+import java.util.Collections;
 
 public class MainActivity extends AppCompatActivity implements NoteOpener {
     private RecyclerView recyclerView;
-    private NotesAdapter mAdapter;
-    private RecyclerView.LayoutManager layoutManager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,15 +28,19 @@ public class MainActivity extends AppCompatActivity implements NoteOpener {
         recyclerView = findViewById(R.id.notesView);
         recyclerView.setHasFixedSize(true);
 
-        layoutManager = new LinearLayoutManager(this);
+        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(layoutManager);
 
+        refreshNoteList();
+
+
+    }
+
+    public void refreshNoteList() {
         final String[] files = this.fileList();
-
-        mAdapter = new NotesAdapter(files, this);
+        Arrays.sort(files, Collections.reverseOrder());
+        NotesAdapter mAdapter = new NotesAdapter(files, this);
         recyclerView.setAdapter(mAdapter);
-
-
     }
 
     public void goTo(View view) {
@@ -45,7 +49,7 @@ public class MainActivity extends AppCompatActivity implements NoteOpener {
         finish();
     }
 
-    @Override
+
     public void openNote(String filename) {
         Intent i = new Intent(this, NoteActivity.class);
         Gson gson = new Gson();
