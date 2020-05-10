@@ -14,8 +14,6 @@ public class NotesAdapter extends RecyclerView.Adapter<NotesAdapter.NotesViewHol
 
     private String[] files;
     private NoteOpener noteOpener;
-    private String endName;
-    private String endDate;
 
 
     public NotesAdapter(String[] files, NoteOpener noteOpener) {
@@ -36,12 +34,8 @@ public class NotesAdapter extends RecyclerView.Adapter<NotesAdapter.NotesViewHol
     public void onBindViewHolder(@NonNull NotesViewHolder holder, int position) {
         final String fileName = files[position];
         String[] subStr = Utils.getFilenameStrings(fileName);
-        for(int i = 0; i < subStr.length; i++) {
-            endName = subStr[1];
-            endDate = subStr[0];
-        }
-        holder.textHeader.setText(endName);
-        holder.textDate.setText(endDate);
+        holder.textHeader.setText(subStr[1]);
+        holder.textDate.setText(subStr[0]);
         holder.view.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

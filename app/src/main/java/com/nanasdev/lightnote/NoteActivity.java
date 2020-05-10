@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import java.text.DateFormat;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
@@ -40,9 +41,8 @@ public class NoteActivity extends AppCompatActivity implements PopupMenu.OnMenuI
             headline.setText(note.getHeader());
             maintext.setText(note.getBody());
         }
-
-
     }
+
 
     private void goToMain(View view) {
         Intent i = new Intent(this, MainActivity.class);
@@ -86,12 +86,12 @@ public class NoteActivity extends AppCompatActivity implements PopupMenu.OnMenuI
         if (note == null) {
             note = new Note(new Date(), headline.getText().toString(), maintext.getText().toString());
 
-            if (isNoteEmpty()) {
+            if (isNoteEmpty(note)) {
                 Toast.makeText(this, onEmpty, Toast.LENGTH_SHORT).show();
                 return;
             }
 
-            saveToFile(view, (new Date().toString()) + "_" + headline.getText().toString(), note);
+            saveToFile(view, DateFormat.getDateTimeInstance().format(new Date()) + "_" + headline.getText().toString(), note);
             Toast.makeText(this, saved, Toast.LENGTH_SHORT).show();
 
         } else {
@@ -99,32 +99,39 @@ public class NoteActivity extends AppCompatActivity implements PopupMenu.OnMenuI
                 Toast.makeText(this, notModified, Toast.LENGTH_SHORT).show();
                 return;
             }
-            String oldFileName = note.getModifiedDate() + "_" + note.getHeader();
-            if ((!note.getHeader().equalsIgnoreCase(headline.getText().toString()) || !note.getBody().equalsIgnoreCase(maintext.getText().toString())) && this.deleteFile(oldFileName)) {
+            String oldFileName = note.getModifiedDateString() + "_" + note.getHeader();
+            if(!note.getHeader().equalsIgnoreCase(headline.getText().toString())){
+                this.deleteFile(oldFileName);
+            } else if(note.getHeader().equalsIgnoreCase(headline.getText().toString()) && !note.getBody().equalsIgnoreCase(maintext.getText().toString())){
+                this.deleteFile(oldFileName);
+            } else {
                 Toast.makeText(this, deleted, Toast.LENGTH_SHORT).show();
             }
-
+// || )
             note.setHeader(headline.getText().toString());
             note.setBody(maintext.getText().toString());
             note.setModifiedDate(new Date());
 
-            if (isNoteEmpty()) {
+            if (isNoteEmpty(note)) {
                 Toast.makeText(this, onEmpty, Toast.LENGTH_SHORT).show();
                 return;
             }
 
-            saveToFile(view, note.getModifiedDate().toString() + "_" + headline.getText().toString(), note);
+            saveToFile(view, note.getModifiedDateString() + "_" + headline.getText().toString(), note);
             Toast.makeText(this, saved, Toast.LENGTH_SHORT).show();
         }
 
     }
 
-    private boolean isNoteEmpty() {
+    private boolean isNoteEmpty(Note note) {
         return note.getBody().equals("") || note.getHeader().equals("");
     }
 
     private boolean isModified(Note note) {
-        return note != null && (!note.getHeader().equalsIgnoreCase(headline.getText().toString()) || !note.getBody().equalsIgnoreCase(maintext.getText().toString()));
+        if(note == null){
+            note = new Note();
+        }
+        return   (!note.getHeader().equalsIgnoreCase(headline.getText().toString()) || !note.getBody().equalsIgnoreCase(maintext.getText().toString()));
     }
 
 
@@ -168,5 +175,14 @@ public class NoteActivity extends AppCompatActivity implements PopupMenu.OnMenuI
             default:
                 return false;
         }
+    }
+
+    public void shareNote (View view) {
+        String share = headline.getText().toString() + "\n" + maintext.getText().toString();
+        Intent shareIntent = new Intent();
+        shareIntent.setAction(Intent.ACTION_SEND);
+        shareIntent.setType("text/plain");
+        shareIntent.putExtra(android.content.Intent.EXTRA_TEXT, share);
+        startActivity(shareIntent);
     }
 }

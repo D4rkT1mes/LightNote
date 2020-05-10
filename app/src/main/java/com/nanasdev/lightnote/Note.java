@@ -1,6 +1,7 @@
 package com.nanasdev.lightnote;
 
 import java.io.Serializable;
+import java.text.DateFormat;
 import java.util.Date;
 
 public class Note implements Serializable {
@@ -10,6 +11,11 @@ public class Note implements Serializable {
     private String body;
 
     public Note() {
+        Date now = new Date();
+        this.createdDate = now;
+        this.header = "";
+        this.body = "";
+        this.modifiedDate = now;
     }
 
     public Note(Date date, String header, String body) {
@@ -21,6 +27,10 @@ public class Note implements Serializable {
 
     public Date getModifiedDate() {
         return modifiedDate;
+    }
+
+    public String getModifiedDateString() {
+        return DateFormat.getDateTimeInstance().format(modifiedDate);
     }
 
     public void setModifiedDate(Date modifiedDate) {
@@ -50,4 +60,5 @@ public class Note implements Serializable {
     public void setBody(String body) {
         this.body = body;
     }
+
 }

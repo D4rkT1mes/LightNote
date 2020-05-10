@@ -15,8 +15,12 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.InputStreamReader;
 import java.nio.charset.StandardCharsets;
+import java.text.DateFormat;
+import java.text.ParseException;
 import java.util.Arrays;
 import java.util.Collections;
+import java.util.Comparator;
+import java.util.Date;
 
 public class MainActivity extends AppCompatActivity implements NoteOpener {
     private RecyclerView recyclerView;
@@ -38,12 +42,24 @@ public class MainActivity extends AppCompatActivity implements NoteOpener {
 
     public void refreshNoteList() {
         final String[] files = this.fileList();
-        Arrays.sort(files, Collections.reverseOrder());
+        Arrays.sort(files, new Comparator<String>() {
+            @Override
+            public int compare(String s1, String s2) {
+                try {
+                    Date d1 = DateFormat.getDateTimeInstance().parse(Utils.getFilenameStrings(s1)[0]);
+                    Date d2 = DateFormat.getDateTimeInstance().parse(Utils.getFilenameStrings(s2)[0]);
+                    return d2.compareTo(d1);
+                } catch (ParseException e) {
+                    e.printStackTrace();
+                }
+                return 0;
+            }
+        });
         NotesAdapter mAdapter = new NotesAdapter(files, this);
         recyclerView.setAdapter(mAdapter);
     }
 
-    public void goTo(View view) {
+    public void createNewNote(View view) {
         Intent i = new Intent(this, NoteActivity.class);
         startActivity(i);
         finish();

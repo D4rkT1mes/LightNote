@@ -16,18 +16,10 @@
         android:id="@+id/share"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_toStartOf="@id/prefs"
-        android:contentDescription="@string/share"
-        app:srcCompat="@android:drawable/ic_menu_share" />
-
-    <ImageButton
-        android:id="@+id/prefs"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
         android:layout_toStartOf="@id/exit_note"
-        android:contentDescription="@string/prefs"
-        app:srcCompat="@android:drawable/ic_menu_preferences" />
-
+        android:contentDescription="@string/share"
+        android:onClick="shareNote"
+        app:srcCompat="@android:drawable/ic_menu_share" />
 
     <ImageButton
         android:id="@+id/exit_note"
