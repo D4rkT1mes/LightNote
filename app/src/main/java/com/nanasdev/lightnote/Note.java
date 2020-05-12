@@ -61,4 +61,7 @@ public class Note implements Serializable {
         this.body = body;
     }
 
+    public boolean isEmpty() {
+        return body.equals("") || header.equals("");
+    }
 }

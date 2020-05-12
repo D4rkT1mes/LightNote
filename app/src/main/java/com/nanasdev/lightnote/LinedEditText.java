@@ -6,6 +6,8 @@ import android.graphics.Paint;
 import android.graphics.Rect;
 import android.util.AttributeSet;
 
+import androidx.core.content.ContextCompat;
+
 public class LinedEditText extends androidx.appcompat.widget.AppCompatEditText {
 
     private Rect mRect;
@@ -16,6 +18,8 @@ public class LinedEditText extends androidx.appcompat.widget.AppCompatEditText {
         mRect = new Rect();
         mPaint = new Paint();
         mPaint.setStyle(Paint.Style.FILL_AND_STROKE);
+        int color = ContextCompat.getColor(context, R.color.lined_text);
+        mPaint.setColor(color);
     }
 
 

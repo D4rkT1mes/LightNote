@@ -7,7 +7,7 @@
     <string name="save_exit">Сохранить</string>
     <string name="share">Поделиться</string>
     <string name="leave_note">Покинуть заметку</string>
-    <string name="greeting">Сегодня будет ещё один отличный день. Запишите что-нибудь!</string>
+    <string name="greeting">Сегодня -  ещё один отличный день. \n Запишите что-нибудь!</string>
     <string name="add_note">+ Добавить новую заметку</string>
     <string name="save_and_exit">Сохранить и выйти</string>
     <string name="exit_without_saving">Выйти без сохранения</string>

@@ -7,7 +7,7 @@
     <string name="save_exit">Save</string>
     <string name="share">Share</string>
     <string name="leave_note">Leave note</string>
-    <string name="greeting">Today is going to be another great day. \n Write something!</string>
+    <string name="greeting">Today is another great day. \n Write something!</string>
     <string name="add_note">+ Add a new note</string>
     <string name="save_and_exit">Save and exit</string>
     <string name="exit_without_saving">Exit without saving</string>

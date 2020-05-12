@@ -3,5 +3,5 @@
     <drawable name="primary">#786321</drawable>
     <drawable name="primary_dark">#5C4707</drawable>
     <drawable name="color_accent">#D1B254</drawable>
-    <drawable name="gray_accent">#9C9C9C</drawable>
+    <drawable name="gray_accent">#CCCCCC</drawable>
 </resources>
