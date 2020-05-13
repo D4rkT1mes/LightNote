@@ -16,7 +16,6 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.gson.Gson;
 
-import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
@@ -50,7 +49,6 @@ public class NoteActivity extends AppCompatActivity implements PopupMenu.OnMenuI
         finish();
     }
 
-    @Override
     public void onBackPressed() {
        if (isModified(note)) {
             String ifLeave = getString(R.string.if_leave);
@@ -61,17 +59,17 @@ public class NoteActivity extends AppCompatActivity implements PopupMenu.OnMenuI
             builder.setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
                 public void onClick(DialogInterface dialog, int id) {
                     saveNote(maintext);
-                    goToMain(headline);
+                    goToMain(maintext);
                 }
             });
             builder.setNegativeButton(android.R.string.no, new DialogInterface.OnClickListener() {
                 public void onClick(DialogInterface dialog, int id) {
-                    goToMain(headline);
+                    goToMain(maintext);
                 }
             });
             builder.show();
         } else {
-            goToMain(headline);
+            goToMain(maintext);
         }
     }
 
